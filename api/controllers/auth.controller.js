@@ -24,7 +24,7 @@ export const signin = async (req, res, next) => {
     }
 
     const validPassword = bcryptjs.compareSync(password, validUser.password);
-    if (!validPassword) return next(errorHandler(404, "Wrong credentials!"));
+    if (!validPassword) return next(errorHandler(401, "Wrong credentials!"));
 
     const token = jwt.sign(
       {
