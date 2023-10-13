@@ -9,8 +9,8 @@ import {
 import OAuth from "../components/OAuth";
 
 const SignIn = () => {
-  const [formData, setFormData] = useState({}); 
-  const {loading, error} = useSelector((state) => state.user)
+  const [formData, setFormData] = useState({});
+  const { loading, error } = useSelector((state) => state.user);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -32,7 +32,7 @@ const SignIn = () => {
         body: JSON.stringify(formData),
       });
       const data = await res.json();
-      console.log(data);
+
       if (data.success === false) {
         dispatch(signInFailure(data.message));
         return;
